@@ -4,9 +4,15 @@ Playing around with the LORA module from exploratory engineering.
 
 Generously provided by Telenor Digital
 
+Project depends on curl and jq, install with apt-get
+
+------------------
+
 First: HW module does:
 
 sensor -> lora -> database
+
+------------------
 
 Then: 
 
@@ -16,6 +22,7 @@ Crontab entry for samples every 5 minutes:
 
 */5 * * * * cd /home/USER/lora-experiments &&  ./src/sh/crontab_get_sensordata.sh >> lora.log
 
+------------------
 Finally:
 
 create graph with R. 
