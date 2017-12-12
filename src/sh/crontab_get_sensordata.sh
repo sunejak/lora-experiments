@@ -12,8 +12,8 @@ now=$(date -d @${stamp})
 # decode the rest
 #
 data=$(echo ${raw} | jq ".data" | tr -d '"')
-humidity=$(echo ${data} | cut -c 33-40)
-temp=$(echo ${data} | cut -c 41-48)
+temp=$(echo ${data} | cut -c 33-40)
+humidity=$(echo ${data} | cut -c 41-48)
 status=$(echo ${data} | cut -c 49-50)
 co2=$(echo ${data} | cut -c 51-54)
 co2_ppm=$(printf "%d\n" 0x${co2})
