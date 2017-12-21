@@ -1,7 +1,20 @@
 #
 # file for plotting data with R
 #
-indata <- scan(file="./lora.log", what=list("","","","","","","","","","","",""), flush=TRUE)
+# do some commandline magic
+#
+myArgs <- strsplit(commandArgs(), " ");
+myLenght <- length(myArgs) + 1;
+xCnt <- 6;
+Txt <- "";
+while ( xCnt < myLenght ) {
+	Txt <- paste(Txt, myArgs[[xCnt]]);
+	xCnt <- xCnt + 1;
+}
+#
+# read the file
+#
+indata <- scan(file=myArgs[[4]], what=list("","","","","","","","","","","",""), flush=TRUE)
 #
 # pick out the fields
 #
@@ -44,7 +57,7 @@ axis(4, ylim=c(0,maxval[1]), col="black", las=1);
 axis.Date(1, at = timestamp, col.axis="red", las=1)
 mtext(side=1,line=2.5,"Day");
 mtext(side=2,line=2.5,"Temperature Humidity");
-mtext(side=3,line=2.5, "Environment plot for A4");
+mtext(side=3,line=2.5, Txt);
 mtext(side=4,line=2.5, "CO2 TVOS");
 ## Add Legend
 legend("topright",legend=c("Temperature", "Humidity", "CO2", "TVOS"),col=c("green", "black", "cyan", "red"), lwd=c(2.5,2.5));
