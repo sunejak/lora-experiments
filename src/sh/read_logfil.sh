@@ -23,8 +23,8 @@ then
         fi
         if [[ ${var:3:4} == "data" ]] ; then
         data=$var
-        temp=$(echo ${var} | cut -c 42-49)
-        humi=$(echo ${var} | cut -c 50-57)
+        humi=$(echo ${var} | cut -c 42-49)
+        temp=$(echo ${var} | cut -c 50-57)
         stat=$(echo ${var} | cut -c 58-59)
         co2=$(echo ${var} | cut -c 60-63)
         tvos=$(echo ${var} | cut -c 64-67)

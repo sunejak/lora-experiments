@@ -5,7 +5,7 @@
 #
 myArgs <- strsplit(commandArgs(), " ");
 myLenght <- length(myArgs) + 1;
-xCnt <- 6;
+xCnt <- 5;
 Txt <- "";
 while ( xCnt < myLenght ) {
 	Txt <- paste(Txt, myArgs[[xCnt]]);

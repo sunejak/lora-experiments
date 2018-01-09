@@ -9,11 +9,12 @@ raw=$(curl -s -XGET https://api.lora.telenor.io/applications/${MODULE}/data?limi
 stamp=$(echo ${raw} | jq ".timestamp" | tr -d '"' | cut -c 1-10)
 now=$(date -d @${stamp})
 #
-# decode the rest
+# decode the rest humidity -> temperature -> statusbit -> CO2 -> TVOC
+# see "Norut dokumentasjon.rtf" mail 28 nov 2017 from hjg@telenordigital.com
 #
 data=$(echo ${raw} | jq ".data" | tr -d '"')
-temp=$(echo ${data} | cut -c 33-40)
-humidity=$(echo ${data} | cut -c 41-48)
+humidity=$(echo ${data} | cut -c 33-40)
+temp=$(echo ${data} | cut -c 41-48)
 status=$(echo ${data} | cut -c 49-50)
 co2=$(echo ${data} | cut -c 51-54)
 co2_ppm=$(printf "%d\n" 0x${co2})
